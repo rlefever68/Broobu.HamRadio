@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name>Prodata Contract Definition</Name>
+    <Description>This project template will create your contract project</Description>
+    <Icon>Pms.png</Icon>
+    <ProjectType>CSharp</ProjectType>
+    <RequiredFrameworkVersion>4.0</RequiredFrameworkVersion>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Pms.Default.Contract</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <TemplateID>9edc049c-0faa-4768-82df-1e736372c63f</TemplateID>
+    <PreviewImage>Pms.png</PreviewImage>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+  </TemplateData>
+  <TemplateContent>
+    <Project File="Files\ContractProject.csproj">
+      <Folder Name="Files\Contract\GenerationConfiguration" TargetFolderName="GenerationConfiguration" >
+        <ProjectItem TargetFileName="ContractGenerationConfiguration.xml" ReplaceParameters="false" OpenInEditor="true">ContractGenerationConfiguration.xml</ProjectItem>
+      </Folder>
+      <Folder Name="Files\Contract\Agent\" TargetFolderName="Agent">
+        <ProjectItem TargetFileName="Agent.tt" ReplaceParameters="true">Agent.tt</ProjectItem>
+      </Folder>
+      <Folder Name="Files\Contract\Domain\" TargetFolderName="Domain">
+      <ProjectItem TargetFileName="DomainClass.tt" ReplaceParameters="true">DomainClass.tt</ProjectItem>
+      </Folder>
+      <Folder Name="Files\Contract\Interfaces\" TargetFolderName="Interfaces">        
+      <ProjectItem TargetFileName="AgentInterface.tt" ReplaceParameters="true">AgentInterface.tt</ProjectItem>
+      <ProjectItem  TargetFileName="ServiceInterface.tt" ReplaceParameters="true">ServiceInterface.tt</ProjectItem>
+      </Folder>
+      <Folder Name="Files\Properties\" TargetFolderName="Properties">
+        <ProjectItem TargetFileName="AssemblyInfo.cs" ReplaceParameters="true">AssemblyInfo.cs</ProjectItem>
+      </Folder>
+    </Project>
+    <References>
+      <Reference>
+        <Assembly>System</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>System.ComponentModel.DataAnnotations</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>System.Runtime.Serialization</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>System.ServiceModel</Assembly>
+      </Reference>
+    </References>
+  </TemplateContent>
+</VSTemplate>

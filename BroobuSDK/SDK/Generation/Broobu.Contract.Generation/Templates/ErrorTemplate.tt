@@ -1,0 +1,3 @@
+﻿<#@ template language="C#" inherits="T4Toolbox.Template" #>
+<#@ output extension="info" #>
+<#= GetExceptionInformation() #>

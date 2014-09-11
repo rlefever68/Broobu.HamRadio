@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContractDefinition Name="ManageAuthorization"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:noNamespaceSchemaLocation= "file:..\Pms.Contract.Generation\Pms.Contract.Generation.xsd">
+  <ContractServiceInterfaces>
+    <ContractServiceInterface Name="IManageAuthorization">
+      <Methods>
+        <Method Name="GetAllApplicationFunctions">          
+          <InterfaceAttributes>
+            <InterfaceAttribute Name="TransactionFlow" Value="TransactionFlowOption.Allowed" />
+          </InterfaceAttributes>
+          <ServiceAttributes>
+            <ServiceAttribute Name="OperationBehavior" Value="TransactionScopeRequired = true" />
+          </ServiceAttributes>
+          <ReturnType Name="ApplicationFunctionViewItem[]" Namespace="Pms.ManageAuthorization.Contract.Domain" />
+        </Method>
+        <Method Name="SaveApplicationFunctions">                    
+          <Parameters>
+            <Parameter Name="applicationFunctionViewItems">
+              <Type Name="ApplicationFunctionViewItem[]" Namespace="Pms.ManageAuthorization.Contract.Domain" />
+            </Parameter>
+          </Parameters>          
+          <ReturnType Name="ApplicationFunctionViewItem[]" Namespace="Pms.ManageAuthorization.Contract.Domain" />
+        </Method>
+        <Method Name="DeleteApplicationFunctions">
+          <Parameters>
+            <Parameter Name="applicationFunctionViewItems">
+              <Type Name="ApplicationFunctionViewItem[]" Namespace="Pms.ManageAuthorization.Contract.Domain" />
+            </Parameter>
+          </Parameters>
+          <ReturnType Name="ApplicationFunctionViewItem[]" Namespace="Pms.ManageAuthorization.Contract.Domain" />
+        </Method>
+
+        <Method Name="GetAllRoles">
+          <ReturnType Name="RoleViewItem[]" Namespace="Pms.ManageAuthorization.Contract.Domain" />
+        </Method>
+        <Method Name="SaveRoles">
+          <Parameters>
+            <Parameter Name="roleViewItems">
+              <Type Name="RoleViewItem[]" Namespace="Pms.ManageAuthorization.Contract.Domain" />
+            </Parameter>
+          </Parameters>
+          <ReturnType Name="RoleViewItem[]" Namespace="Pms.ManageAuthorization.Contract.Domain" />
+        </Method>
+        <Method Name="DeleteRoles">
+          <Parameters>
+            <Parameter Name="roleViewItem">
+              <Type Name="RoleViewItem[]" Namespace="Pms.ManageAuthorization.Contract.Domain" />
+            </Parameter>
+          </Parameters>
+          <ReturnType Name="RoleViewItem[]" Namespace="Pms.ManageAuthorization.Contract.Domain" />
+        </Method>
+        <Method Name="GetAccountsForRole">
+          <Parameters>
+            <Parameter Name="roleId">
+              <Type Name="String" Namespace="System" />
+            </Parameter>
+          </Parameters>
+          <ReturnType Name="AccountViewItem[]" Namespace="Pms.ManageAuthorization.Contract.Domain" />
+        </Method>
+
+        <Method Name="GetAllAccounts">
+          <ReturnType Name="AccountViewItem[]" Namespace="Pms.ManageAuthorization.Contract.Domain" />
+        </Method>
+
+      </Methods>
+    </ContractServiceInterface>
+  </ContractServiceInterfaces>
+  <DomainObjectClasses>
+    <DomainObjectClass Name="ApplicationFunctionViewItem"/>
+    <DomainObjectClass Name="RoleViewItem"/>
+    <DomainObjectClass Name="AccountViewItem"/>
+  </DomainObjectClasses>
+</ContractDefinition>

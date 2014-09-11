@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_splash"
+    android:name=".SplashFragment">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/capSplash"
+        android:text="@string/capSplash"
+        android:gravity="center_horizontal"
+        android:background="@drawable/abc_cab_background_top_holo_dark"
+        android:paddingBottom="5dp" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imgSplash"
+        android:layout_below="@id/capSplash"
+        android:background="@drawable/splash_screen"
+        android:layout_margin="10dp"/>
+</RelativeLayout>

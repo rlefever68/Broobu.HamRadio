@@ -1,0 +1,62 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:name=".StationFragment">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/capQRZ"
+        android:text="@string/capQRZ"
+        android:gravity="center_horizontal"
+        android:background="@drawable/abc_cab_background_top_holo_dark"
+        android:paddingBottom="5dp" />
+    <SearchView
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/searchView"
+        android:text="@string/searchText"
+        android:layout_margin="10dp"
+        android:inputType="textCapCharacters"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:editable="true"
+        android:enabled="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textSize="30sp"
+        android:textIsSelectable="false"
+        android:selectAllOnFocus="true"
+        android:imeOptions="actionGo|actionSend"
+        android:baselineAligned="false"
+        android:layout_below="@id/capQRZ" />
+    <fragment android:name="com.broobu.hamdroid.fragments.stationinfo.CaptionFragment"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        tools:layout="@layout/fragment_caption"
+        android:id="@+id/fgmCaption"
+        android:layout_below="@id/searchView"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/fgmCaption"
+        android:id="@+id/_containerParent">
+        <android.support.v4.view.ViewPager
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:id="@+id/viewpager"
+            android:layout_margin="5dp"
+            android:padding="5dp" />
+    </FrameLayout>
+</RelativeLayout>
+
+
+
+
+
+
+
+
+

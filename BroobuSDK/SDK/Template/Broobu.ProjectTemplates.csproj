@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{8369F6EF-D59E-4703-88CF-DBB2827C8B80}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pms.ProjectTemplate</RootNamespace>
+    <AssemblyName>Pms.ProjectTemplate</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <GeneratePkgDefFile>false</GeneratePkgDefFile>
+    <IncludeAssemblyInVSIXContainer>false</IncludeAssemblyInVSIXContainer>
+    <IncludeDebugSymbolsInVSIXContainer>false</IncludeDebugSymbolsInVSIXContainer>
+    <IncludeDebugSymbolsInLocalVSIXDeployment>false</IncludeDebugSymbolsInLocalVSIXDeployment>
+    <CreateVsixContainer>false</CreateVsixContainer>
+    <DeployExtension>false</DeployExtension>
+    <DeployVSTemplates>false</DeployVSTemplates>
+    <CopyVsixManifestToOutput>false</CopyVsixManifestToOutput>
+    <CopyBuildOutputToOutputDirectory>false</CopyBuildOutputToOutputDirectory>
+    <CopyOutputSymbolsToOutputDirectory>false</CopyOutputSymbolsToOutputDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\ProjectTemplates\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Pms.ProjectTemplates\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.CoreUtility">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\pms.pfx">
+      <Link>pms.pfx</Link>
+    </None>
+    <None Include="Templates\Files\ContractProject.csproj">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Templates\Files\Contract\Agent\Agent.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Agent2.txt</LastGenOutput>
+    </None>
+    <None Include="Templates\Files\Contract\Domain\DomainClass.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DomainClass2.txt</LastGenOutput>
+    </None>
+    <None Include="Templates\Files\Contract\Interfaces\AgentInterface.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AgentInterface2.txt</LastGenOutput>
+    </None>
+    <None Include="Templates\Files\Contract\Interfaces\ServiceInterface.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ServiceInterface2.txt</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <VSTemplate Include="Templates\Pms.ProjectTemplate.Contract.vstemplate">
+      <SubType>Designer</SubType>
+    </VSTemplate>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Files\Contract\Agent\Agent2.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Agent.tt</DependentUpon>
+    </Content>
+    <Content Include="Templates\Pms.png" />
+    <Content Include="Templates\Files\Contract\GenerationConfiguration\ContractGenerationConfiguration.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="Templates\Files\Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\VSSDK\Microsoft.VsSDK.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

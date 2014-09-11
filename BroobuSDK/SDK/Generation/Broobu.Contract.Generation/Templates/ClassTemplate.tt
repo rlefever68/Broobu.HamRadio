@@ -1,0 +1,119 @@
+﻿<#@ template language="C#" inherits="T4Toolbox.Template" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Iris.Contract.Generation.Domain" #>
+<# foreach (var item in Class.UsedNamespaces) { #>using <#= item #>;
+<# } #>
+
+namespace <#= Class.Namespace #>
+{
+<#if(Class.Attributes!=null && Class.Attributes.Count()>0)
+{
+		foreach (AttributeDefinition attribute in Class.Attributes)
+{#>	<#= attribute #>
+<# }
+}#>
+	<#= Class.Signature #>
+	{
+<# if(Class.Constructors!=null && Class.Constructors.Count()>0) 
+{#>
+		#region Constructors
+<#foreach (ConstructorDefinition constructor in Class.Constructors)
+{
+	if(constructor.Attributes!=null && constructor.Attributes.Count()>0)
+	{
+		foreach (AttributeDefinition attribute in constructor.Attributes)
+{#>		<#= attribute #>
+<#
+}
+	}#>		<#= constructor.Signature #>
+		{
+<# foreach (String line in System.Text.RegularExpressions.Regex.Split(constructor.Body, System.Environment.NewLine))
+{#>			<#= line #>
+<# } #>
+		}
+<#}#>			
+		#endregion		
+<#}#>
+<# if((Class.Fields!=null && Class.Fields.Count()>0)||(Class.Properties!=null && Class.Properties.Count()>0))
+{ #>
+		#region Fields
+<# foreach (FieldDefinition field in Class.Fields.Union(Class.Properties.Select(x=>(FieldDefinition)x))) 
+{ #>		<#= field.Signature #>;
+<# } #>
+		#endregion
+<#}
+if(Class.Properties!=null && Class.Properties.Count()>0)
+{ #>
+		#region Properties
+<# foreach (PropertyDefinition property in Class.Properties) 
+{
+	if(property.Attributes!=null && property.Attributes.Count()>0)
+	{
+		foreach (AttributeDefinition attribute in property.Attributes)
+{#>		<#= attribute #>
+<# }
+} #>		<#= property.Signature #><# if(!System.String.IsNullOrWhiteSpace(property.GetBody)&& !System.String.IsNullOrWhiteSpace(property.GetBody))
+{ #>
+
+		{
+			get
+			{
+<# foreach (String line in System.Text.RegularExpressions.Regex.Split(property.GetBody, System.Environment.NewLine))
+{#>				<#= line #>
+<# } #>
+			}
+			set
+			{
+<# foreach (String line in System.Text.RegularExpressions.Regex.Split(property.SetBody, System.Environment.NewLine))
+{#>				<#= line #>
+<# } #>
+			}
+		}
+<# } else if(System.String.IsNullOrWhiteSpace(property.GetBody)&& System.String.IsNullOrWhiteSpace(property.GetBody))
+{ #> { get; set; }
+<# } else if(!System.String.IsNullOrWhiteSpace(property.GetBody))
+{ #>
+
+		{
+			get
+			{
+<# foreach (String line in System.Text.RegularExpressions.Regex.Split(property.GetBody, System.Environment.NewLine))
+{#>				<#= line #>
+<# } #>
+			}
+		}
+<# } #>
+<# } #>
+		#endregion
+<#}#>
+<# if(Class.Events!=null && Class.Events.Count()>0) 
+{#>
+		#region Events
+<#foreach (EventDefinition item in Class.Events)
+{#>		<#= item.Signature #>;
+<#}#>		
+		#endregion		
+<#}#>
+<# if(Class.Methods!=null && Class.Methods.Count()>0) 
+{#>
+		#region Methods
+<#foreach (MethodDefinition method in Class.Methods)
+{
+	if(method.Attributes!=null && method.Attributes.Count()>0)
+	{
+		foreach (AttributeDefinition attribute in method.Attributes)
+{#>		<#= attribute #>
+<# }
+} #>		<#= method.Signature #><# if(method.IsPartial && System.String.IsNullOrWhiteSpace(method.Body)) { #>;<# } else { #>
+
+		{
+<# foreach (String line in System.Text.RegularExpressions.Regex.Split(method.Body, System.Environment.NewLine))
+{#>			<#= line #>
+<# } #>
+		}
+<#}
+}#>			
+		#endregion		
+<#}#>
+	}
+}

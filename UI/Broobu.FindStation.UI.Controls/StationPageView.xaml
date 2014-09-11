@@ -1,0 +1,36 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="clr-namespace:Broobu.FindStation.UI.Controls"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             x:Class="Broobu.FindStation.UI.Controls.StationPageView"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <controls:StationCardView Grid.Row="1" Grid.ColumnSpan="3" DataContext="{Binding StationInfo}"/>
+       
+        <Border x:Name="BrdrImage" HorizontalAlignment="Left" Height="200" Margin="2" 
+			Grid.Row="0" Grid.Column="0"
+			VerticalAlignment="Top" Width="200" BorderThickness="8" CornerRadius="2">
+            <Border.Effect>
+                <dx:WaterTransitionEffect/>
+            </Border.Effect>
+            <Image x:Name="ImgStation" Source="{Binding StationAvatar}"  />
+        </Border>
+        <Border Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="2">
+            <Label Content="{Binding StationSummary}" FontWeight="Bold" FontSize="16"/>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pms.Project.Templates", "Pms.Project.Templates", "{4BA09305-96E2-4F4E-9EF7-1BD72A749386}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProjectTemplateReleases", "ProjectTemplateReleases", "{EB9871AF-7D81-40BD-8024-DF93DAA52969}"
+	ProjectSection(SolutionItems) = preProject
+		Pms.Project.Templates\ProjectTemplateReleases\Prodata Database Project Template v0.1.zip = Pms.Project.Templates\ProjectTemplateReleases\Prodata Database Project Template v0.1.zip
+		Pms.Project.Templates\ProjectTemplateReleases\Prodata Database Project Template v0.2.zip = Pms.Project.Templates\ProjectTemplateReleases\Prodata Database Project Template v0.2.zip
+		Pms.Project.Templates\ProjectTemplateReleases\Prodata Database Project Template v0.3.zip = Pms.Project.Templates\ProjectTemplateReleases\Prodata Database Project Template v0.3.zip
+		Pms.Project.Templates\ProjectTemplateReleases\Prodata Database Project Template v0.4.zip = Pms.Project.Templates\ProjectTemplateReleases\Prodata Database Project Template v0.4.zip
+		Pms.Project.Templates\ProjectTemplateReleases\Prodata Database Project Template v0.5.zip = Pms.Project.Templates\ProjectTemplateReleases\Prodata Database Project Template v0.5.zip
+		Pms.Project.Templates\ProjectTemplateReleases\Prodata Database Project Template v0.6.zip = Pms.Project.Templates\ProjectTemplateReleases\Prodata Database Project Template v0.6.zip
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pms.ItemTemplates", "Pms.ItemTemplates.csproj", "{2BFB1B46-1AA1-4FAC-B57F-7D6A21C397ED}"
+EndProject
+Project("{C8D11400-126E-41CD-887F-60BD40844F9E}") = "Pms.DatabaseProject.Template", "Pms.Project.Templates\Pms.DatabaseProject.Template\Pms.DatabaseProject.Template.dbproj", "{67CBC824-A49E-4E9B-A947-360F3DFE65C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Releases", "Releases", "{FA290364-97B5-43ED-B101-A0E30E5446AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Prodata", "Prodata", "{71ABE464-84F6-4C36-8CFE-FEE4E744F465}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pms.ProjectTemplates", "Pms.ProjectTemplates.csproj", "{8369F6EF-D59E-4703-88CF-DBB2827C8B80}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2BFB1B46-1AA1-4FAC-B57F-7D6A21C397ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BFB1B46-1AA1-4FAC-B57F-7D6A21C397ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BFB1B46-1AA1-4FAC-B57F-7D6A21C397ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BFB1B46-1AA1-4FAC-B57F-7D6A21C397ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{8369F6EF-D59E-4703-88CF-DBB2827C8B80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8369F6EF-D59E-4703-88CF-DBB2827C8B80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8369F6EF-D59E-4703-88CF-DBB2827C8B80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8369F6EF-D59E-4703-88CF-DBB2827C8B80}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EB9871AF-7D81-40BD-8024-DF93DAA52969} = {4BA09305-96E2-4F4E-9EF7-1BD72A749386}
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3} = {4BA09305-96E2-4F4E-9EF7-1BD72A749386}
+		{FA290364-97B5-43ED-B101-A0E30E5446AB} = {4BA09305-96E2-4F4E-9EF7-1BD72A749386}
+		{71ABE464-84F6-4C36-8CFE-FEE4E744F465} = {FA290364-97B5-43ED-B101-A0E30E5446AB}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Iris.Contract.Generation.Domain.AttributeDefinition">
+    <Position X="3.75" Y="3.75" Width="1.75" />
+    <Members>
+      <Field Name="_Type" Hidden="true" />
+      <Field Name="_Value" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAEAAAAAAAAACBAAAAAAQAgAAACBAA=</HashCode>
+      <FileName>Domain\AttributeDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Iris.Contract.Generation.Domain.TypeDefinition">
+    <Position X="8.75" Y="6" Width="2" />
+    <Members>
+      <Field Name="_IsEnum" Hidden="true" />
+      <Field Name="_IsStruct" Hidden="true" />
+      <Field Name="_Template" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAEAAgIAEAIAAIAAAACBAAAAAAAgAAAACABA=</HashCode>
+      <FileName>Domain\TypeDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Iris.Contract.Generation.Domain.ClassDefinition">
+    <Position X="21.5" Y="6" Width="2" />
+    <Members>
+      <Field Name="_Attributes" Hidden="true" />
+      <Field Name="_BaseClass" Hidden="true" />
+      <Field Name="_Events" Hidden="true" />
+      <Field Name="_Fields" Hidden="true" />
+      <Field Name="_Interfaces" Hidden="true" />
+      <Field Name="_IsPartial" Hidden="true" />
+      <Field Name="_Methods" Hidden="true" />
+      <Field Name="_Modifier" Hidden="true" />
+      <Field Name="_Properties" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAABgAAAABAABQMAAAACAgQAiBAEIAiAAiAAAACgEE=</HashCode>
+      <FileName>Domain\ClassDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Iris.Contract.Generation.Domain.ContractAgentClassDefinition">
+    <Position X="18" Y="11" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAEAAIAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Domain\ContractAgentClassDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Iris.Contract.Generation.Domain.ContractAgentFactoryClassDefinition">
+    <Position X="24" Y="11" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\ContractAgentFactoryClassDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Iris.Contract.Generation.Domain.ContractAgentInterfaceDefinition">
+    <Position X="11.5" Y="10.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Domain\ContractAgentInterfaceDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Iris.Contract.Generation.Domain.ContractDefinition">
+    <Position X="27.5" Y="3.75" Width="1.75" />
+    <Members>
+      <Field Name="_ContractServiceInterfaces" Hidden="true" />
+      <Field Name="_DomainObjectClasses" Hidden="true" />
+      <Field Name="_UpdatedContractServiceInterfaces" Hidden="true" />
+      <Field Name="_UpdatedDomainObjectClasses" Hidden="true" />
+      <Field Name="RelativeConfigurationFileLocation" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAACCEAgAAACAAAAAAABAAgAACBAAAAAAAAAAAACEAA=</HashCode>
+      <FileName>Domain\ContractDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Iris.Contract.Generation.Domain.ContractServiceDefinition">
+    <Position X="14.75" Y="10.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAUAAAAAAAQACBAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Domain\ContractServiceDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Iris.Contract.Generation.Domain.DomainObjectClassDefinition">
+    <Position X="21" Y="11" Width="2.25" />
+    <Members>
+      <Property Name="UsedNamespaces" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAACBAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Domain\DomainObjectClassDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Iris.Contract.Generation.Domain.EventDefinition">
+    <Position X="37.5" Y="3.75" Width="1.75" />
+    <Members>
+      <Field Name="_ActionTemplate" Hidden="true" />
+      <Field Name="_Attributes" Hidden="true" />
+      <Field Name="_Modifier" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAEAAAAAAAQACBABAACAQgAAAACAAE=</HashCode>
+      <FileName>Domain\EventDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Iris.Contract.Generation.Domain.FieldDefinition">
+    <Position X="6.25" Y="3.75" Width="1.75" />
+    <Members>
+      <Field Name="_Attributes" Hidden="true" />
+      <Field Name="_LinkedProperty" Hidden="true" />
+      <Field Name="_Modifier" Hidden="true" />
+      <Field Name="_Type" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAABCAAAAAAAAAEAAAAAgAQACBAAAACAQgAAAACBAE=</HashCode>
+      <FileName>Domain\FieldDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Iris.Contract.Generation.Domain.MethodDefinition">
+    <Position X="32.5" Y="3.75" Width="1.75" />
+    <Members>
+      <Field Name="_Attributes" Hidden="true" />
+      <Field Name="_Body" Hidden="true" />
+      <Field Name="_IsAbstract" Hidden="true" />
+      <Field Name="_IsOverride" Hidden="true" />
+      <Field Name="_IsPartial" Hidden="true" />
+      <Field Name="_IsStatic" Hidden="true" />
+      <Field Name="_Modifier" Hidden="true" />
+      <Field Name="_Parameters" Hidden="true" />
+      <Field Name="_ReturnType" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAABRAAAABBAABAEAIADEBAYBCBAEABiAIgCAAAGAAE=</HashCode>
+      <FileName>Domain\MethodDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Iris.Contract.Generation.Domain.NameItemDefinitionBase">
+    <Position X="20.5" Y="0.5" Width="2" />
+    <Members>
+      <Field Name="_Name" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAACAAIAAAIAQAgAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Domain\NameItemDefinitionBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Iris.Contract.Generation.Domain.NamespaceItemDefinitionBase">
+    <Position X="16.75" Y="3.75" Width="2.25" />
+    <Members>
+      <Field Name="_Namespace" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAACAAA=</HashCode>
+      <FileName>Domain\NamespaceItemDefinitionBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Iris.Contract.Generation.Domain.ParameterDefinition">
+    <Position X="30" Y="3.75" Width="1.75" />
+    <Members>
+      <Field Name="_DefaultValue" Hidden="true" />
+      <Field Name="_Modifier" Hidden="true" />
+      <Field Name="_Type" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAEAAAAAAAAECBAAAAAAQgAAAACBAA=</HashCode>
+      <FileName>Domain\ParameterDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Iris.Contract.Generation.Domain.PropertyDefinition">
+    <Position X="35" Y="3.75" Width="1.75" />
+    <Members>
+      <Field Name="_Attributes" Hidden="true" />
+      <Field Name="_FieldName" Hidden="true" />
+      <Field Name="_GetBody" Hidden="true" />
+      <Field Name="_Modifier" Hidden="true" />
+      <Field Name="_SetBody" Hidden="true" />
+      <Field Name="_Type" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAABRAAAAAAAAAEAAAgAAAQACDAAAACAQgAAAACBAE=</HashCode>
+      <FileName>Domain\PropertyDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Iris.Contract.Generation.Domain.SelectableString" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="40.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAEAAAIAAAAAAAgAAAAAAAAAAASACAAAA=</HashCode>
+      <FileName>Domain\SelectableString.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Enum Name="Iris.Contract.Generation.Domain.Modifier" Collapsed="true">
+    <Position X="40.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIEAAAAAEAAAAAAAAAAACAEAQAA=</HashCode>
+      <FileName>Domain\Modifier.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Iris.Contract.Generation.Domain.ParameterModifier" Collapsed="true">
+    <Position X="42" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAQAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Domain\ParameterModifier.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

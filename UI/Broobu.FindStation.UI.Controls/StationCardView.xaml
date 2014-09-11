@@ -1,0 +1,93 @@
+﻿<UserControl xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:views="clr-namespace:Broobu.Fx.UI.Views;assembly=Broobu.Fx.UI"
+             x:Class="Broobu.FindStation.UI.Controls.StationCardView"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="700">
+    <Grid x:Name="GrdStationInfo">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"  />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <views:BusyOverlay IsBusy="{Binding IsBusy}" HasNoData="{Binding IsEmpty}" Grid.Row="1" Grid.ColumnSpan="11"/>
+
+        <Label x:Name="LblCallId" Grid.Column="0" Grid.Row="0" Content="Call Id" HorizontalAlignment="Right" Margin="0" />
+        <dxe:TextEdit x:Name="TxtCallId" Grid.Column="1" Grid.Row="0" Width="100" HorizontalAlignment="Left" EditValue="{Binding CallId}" VerticalAlignment="Center" Margin="2" />
+
+        <Label x:Name="LblFirstName" Grid.Column="0" Grid.Row="1" Content="First Name" HorizontalAlignment="Right" />
+        <dxe:TextEdit x:Name="TxtFirstName" Grid.Column="1" Grid.Row="1"  EditValue="{Binding FirstName}" Width="100" HorizontalAlignment="Left" Margin="2" VerticalAlignment="Center"/>
+
+        <Label x:Name="LblLastName" Grid.Column="2" Grid.Row="1" Content="Last Name" HorizontalAlignment="Right" />
+        <dxe:TextEdit x:Name="TxtLastName" Grid.Column="3" Grid.Row="1"  EditValue="{Binding LastName}" Width="116" HorizontalAlignment="Left" Margin="2,2,0,2" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+
+        <Label x:Name="LblAddress1" Grid.Column="0" Grid.Row="3" Content="Address " HorizontalAlignment="Right" />
+        <dxe:TextEdit x:Name="TxtAddress1" Grid.Column="1" Grid.Row="3" EditValue="{Binding Address1}" Width="100" HorizontalAlignment="Left" Margin="2,2,0,2" VerticalAlignment="Center"/>
+
+        <Label x:Name="LblAddress2" Grid.Column="0" Grid.Row="4" Content="" HorizontalAlignment="Right" />
+        <dxe:TextEdit x:Name="TxtAddress2" Grid.Column="3" Grid.Row="4"  EditValue="{Binding Address2}" Width="115" HorizontalAlignment="Left" Margin="3,3,0,5" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+
+        <Label x:Name="LblState" Grid.Column="0" Grid.Row="5" Content="State" HorizontalAlignment="Right" />
+        <dxe:TextEdit x:Name="TxtZip" Grid.Column="1" Grid.Row="4"  EditValue="{Binding Zip}" Width="100" HorizontalAlignment="Left" Margin="2" VerticalAlignment="Center"/>
+
+
+
+        <Label x:Name="LbBorn" Grid.Row="0" Grid.Column="2" Content="Born" HorizontalAlignment="Right" Height="26" VerticalAlignment="Bottom" />
+        <dxe:TextEdit Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" Margin="2" VerticalAlignment="Center" Width="116" Grid.ColumnSpan="2"/>
+        <Label x:Name="LblZip" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Right" Content="Zip Code" RenderTransformOrigin="0.355,-1.59" Margin="0,2,2,2"/>
+        <Label x:Name="LblCity" Grid.Column="2" Grid.Row="4" Content="City" HorizontalAlignment="Right" Margin="2" />
+        <dxe:TextEdit x:Name="TxtState" Grid.Column="1" Grid.Row="5"  EditValue="{Binding State}" Width="100" HorizontalAlignment="Left" Margin="2" VerticalAlignment="Center"/>
+        <Label x:Name="LblCounty" Grid.Column="2" Grid.Row="5" Content="County" HorizontalAlignment="Right" Margin="2" />
+        <dxe:TextEdit x:Name="TxtCounty" Grid.Column="3" Grid.Row="5"  EditValue="{Binding County}" Width="116" HorizontalAlignment="Left" Margin="2,4,0,4" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+
+        
+        <Label x:Name="LblCountry" Grid.Column="0" Grid.Row="6" Content="Country" HorizontalAlignment="Right" Margin="2" />
+        <Label x:Name="LblLand" Grid.Column="2" Grid.Row="6" Content="Land" HorizontalAlignment="Right" Margin="2" />
+        <dxe:TextEdit x:Name="TxtCountry" Grid.Column="1" Grid.Row="6"  EditValue="{Binding Country}" Width="100" HorizontalAlignment="Left" Margin="2" VerticalAlignment="Center"/>
+        <dxe:TextEdit x:Name="TxtLand" Grid.Column="3" Grid.Row="6"  EditValue="{Binding Land}" Width="116" HorizontalAlignment="Left" Margin="2,4,0,4" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+
+
+        <Label x:Name="LblLongitude" Grid.Column="0" Grid.Row="7" Content="Longitude" HorizontalAlignment="Right" Margin="2" />
+        <Label x:Name="LblLatitude" Grid.Column="2" Grid.Row="7" Content="Latitude" HorizontalAlignment="Right" Margin="2" />
+        <dxe:TextEdit x:Name="TxtLongitude" Grid.Column="1" Grid.Row="7"  EditValue="{Binding Longitude}" Width="100" HorizontalAlignment="Left" Margin="2" VerticalAlignment="Center"/>
+        <dxe:TextEdit x:Name="TxtLatitude" Grid.Column="3" Grid.Row="7"  EditValue="{Binding Latitude}" Width="116" HorizontalAlignment="Left" Margin="2,4,0,4" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+
+        <Label x:Name="LblEfDate" Grid.Column="0" Grid.Row="8" Content="Effective" HorizontalAlignment="Right" Margin="2" />
+        <Label x:Name="LblExpDate" Grid.Column="2" Grid.Row="8" Content="Expired" HorizontalAlignment="Right" Margin="2" />
+        <dxe:TextEdit x:Name="TxtEffDate" Grid.Column="1" Grid.Row="8"  EditValue="{Binding EfDate}" Width="100" HorizontalAlignment="Left" Margin="2" VerticalAlignment="Center"/>
+        <dxe:TextEdit x:Name="TxtExpDate" Grid.Column="3" Grid.Row="8"  EditValue="{Binding ExpDate}" Width="116" HorizontalAlignment="Left" Margin="2" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+
+        <Label x:Name="LblUrl" Grid.Column="0" Grid.Row="9" Content="Url" HorizontalAlignment="Right" Margin="2" />
+        <Label x:Name="LblEmail" Grid.Column="2" Grid.Row="9" Content="Email" HorizontalAlignment="Right" Margin="2" />
+        <dxe:TextEdit x:Name="TxtUrl" Grid.Column="1" Grid.Row="9"  EditValue="{Binding Url}" Width="100" HorizontalAlignment="Left" Margin="2" VerticalAlignment="Center"/>
+        <dxe:TextEdit x:Name="Email" Grid.Column="3" Grid.Row="9"  EditValue="{Binding Email}" Width="116" HorizontalAlignment="Left" Margin="2" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A71D50EC-236A-4BAC-AF31-B6B7D7936880}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Broobu.Hamdroid.Business</RootNamespace>
+    <AssemblyName>Broobu.Hamdroid.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\broobu.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Broobu.LATI.Contract">
+      <HintPath>..\..\BroobuSDK\Contracts\Broobu.LATI.Contract.dll</HintPath>
+    </Reference>
+    <Reference Include="Broobu.Taxonomy.Contract">
+      <HintPath>..\..\BroobuSDK\SDK\Broobu.Taxonomy.Contract.dll</HintPath>
+    </Reference>
+    <Reference Include="Iris.Fx">
+      <HintPath>..\..\BroobuSDK\SDK\Iris.Fx.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\BroobuSDK\SDK\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\AssemblyVersions.cs">
+      <Link>Properties\AssemblyVersions.cs</Link>
+    </Compile>
+    <Compile Include="HamdroidProvider.cs" />
+    <Compile Include="Interfaces\IHamdroids.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Workers\Hamdroids.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\broobu.pfx">
+      <Link>broobu.pfx</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Contract\Broobu.Hamdroid.Contract\Broobu.Hamdroid.Contract.csproj">
+      <Project>{8F403A73-E3C0-426F-BC50-B16B9BD8A136}</Project>
+      <Name>Broobu.Hamdroid.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Contract\Broobu.HamRadio.Contract\Broobu.HamRadio.Contract.csproj">
+      <Project>{38d65b25-ed5d-4b68-9310-23e6999a965c}</Project>
+      <Name>Broobu.HamRadio.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Broobu.HamRadio.Business\Broobu.HamRadio.Business.csproj">
+      <Project>{0553a9e3-1352-4aed-ab01-6d72f5420361}</Project>
+      <Name>Broobu.HamRadio.Business</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="anonymousAvatar.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

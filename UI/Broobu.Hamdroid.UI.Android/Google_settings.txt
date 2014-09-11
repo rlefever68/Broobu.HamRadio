@@ -1,0 +1,35 @@
+
+On Root Machine
+***************
+"C:\Program Files\Java\jre7\bin\keytool.exe"  -list -v -keystore "%USERPROFILE%\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
+
+Hamdroid SHA1
+-------------
+2F:DC:12:57:30:86:61:58:06:02:8A:54:33:B3:C4:AC:CA:D1:5E:71
+
+Hamdroid Google API key
+-----------------------
+AIzaSyCQBtgxFGg66iVPfwWYINaYBRRkK2eWOPE
+
+
+***************************
+RELEASE KEYSTORE GENERATION
+***************************
+to create the keystore:
+"C:\Program Files\Java\jre7\bin\keytool.exe" -genkey -v -keystore broobu.keystore -alias broobu -keyalg RSA -keysize 2048 -validity 10000
+
+to obtain the SHA1:
+C:\BroobuDev\Hamdroid>"C:\Program Files\Java\jre7\bin\keytool.exe"  -list -v -keystore "broobu.keystore" -alias broobu -storepass K1llB1ll2 -keypass K1llB1ll2
+
+release SHA
+-----------
+15:14:E6:EF:18:3B:97:C4:0F:3F:C6:E6:7F:04:FE:D5:76:87:AF:A5
+
+
+Hamdroid Google API Key
+-----------------------
+AIzaSyCE1kh4gMb4O7qqrIIdfamFbjopdkCtVpU
+
+
+
+

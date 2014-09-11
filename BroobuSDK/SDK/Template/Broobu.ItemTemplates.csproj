@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{2BFB1B46-1AA1-4FAC-B57F-7D6A21C397ED}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pms.ItemTemplates</RootNamespace>
+    <AssemblyName>Pms.ItemTemplates</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <GeneratePkgDefFile>false</GeneratePkgDefFile>
+    <IncludeAssemblyInVSIXContainer>false</IncludeAssemblyInVSIXContainer>
+    <IncludeDebugSymbolsInVSIXContainer>false</IncludeDebugSymbolsInVSIXContainer>
+    <IncludeDebugSymbolsInLocalVSIXDeployment>false</IncludeDebugSymbolsInLocalVSIXDeployment>
+    <CreateVsixContainer>false</CreateVsixContainer>
+    <DeployExtension>false</DeployExtension>
+    <DeployVSTemplates>false</DeployVSTemplates>
+    <CopyVsixManifestToOutput>false</CopyVsixManifestToOutput>
+    <CopyBuildOutputToOutputDirectory>false</CopyBuildOutputToOutputDirectory>
+    <CopyOutputSymbolsToOutputDirectory>false</CopyOutputSymbolsToOutputDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\ItemTemplates\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Pms.ItemTemplates\bin\Debug</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CreateVsixContainer>False</CreateVsixContainer>
+    <DeployExtension>False</DeployExtension>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\..\mobifxsdk.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+    <Reference Include="T4Toolbox.10.0, Version=10.10.13.1, Culture=neutral, PublicKeyToken=7e313accbcce84dc, processorArchitecture=x86" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\mobifxsdk.pfx">
+      <Link>..\..\..\mobifxsdk.pfx</Link>
+    </None>
+    <None Include="Templates\Files\Contract\Agent\Agent.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Agent.txt</LastGenOutput>
+    </None>
+    <None Include="Templates\Files\Contract\Agent\AgentFactory.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AgentFactory.txt</LastGenOutput>
+    </None>
+    <None Include="Templates\Files\Contract\Domain\DomainClass.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DomainClass.txt</LastGenOutput>
+    </None>
+    <None Include="Templates\Files\Contract\Interfaces\AgentInterface.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AgentInterface.txt</LastGenOutput>
+    </None>
+    <None Include="Templates\Files\Contract\Interfaces\ServiceInterface.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ServiceInterface.txt</LastGenOutput>
+    </None>
+    <None Include="Templates\Files\Dao\RepositoryDefinition\RepositoryDefinition.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RepositoryDefinition2.txt</LastGenOutput>
+    </None>
+    <None Include="Templates\Files\Dao\StoredProcedureCrudGenerator\StoredProcedureCrudGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>StoredProcedureCrudGenerator.txt</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <VSTemplate Include="Templates\Pms.ItemTemplate.Contract.vstemplate">
+      <SubType>Designer</SubType>
+    </VSTemplate>
+    <VSTemplate Include="Templates\Pms.ItemTemplate.StoredProcedureCrudGenerator.vstemplate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <VSTemplate Include="Templates\Pms.ItemTemplate.RepositoryDefinition.vstemplate">
+      <SubType>Designer</SubType>
+    </VSTemplate>
+    <Content Include="Templates\Files\Contract\GenerationConfiguration\ContractGenerationConfiguration.xml" />
+    <Content Include="Templates\Pms.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Empty.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\VSSDK\Microsoft.VsSDK.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

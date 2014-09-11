@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:name=".PoIMapFragment"
+    android:padding="5dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textViewMap"
+        android:text="@string/lblMapView"
+        android:gravity="center_horizontal"
+        android:background="@drawable/abc_cab_background_top_holo_dark"
+        android:paddingBottom="5dp"
+        android:layout_alignParentBottom="true"/>
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fgmPoIMap"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_above="@id/textViewMap"
+        android:layout_margin="5dp"/>
+
+</RelativeLayout>

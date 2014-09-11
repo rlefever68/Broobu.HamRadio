@@ -1,0 +1,51 @@
+﻿<#@ template language="C#" inherits="T4Toolbox.Template" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Iris.Contract.Generation.Domain" #>
+//	========================================================================================
+//	INFO: This file is generated from a T4 template.
+//  !!!	Any changes made manually will be lost next time this file is regenerated !!!
+//	========================================================================================
+<# foreach (String item in Interface.UsedNamespaces) { #>using <#= item #>;
+<# } #>
+
+namespace <#= Interface.Namespace #>
+{
+<#if(Interface.Attributes!=null && Interface.Attributes.Count()>0)
+{
+		foreach (AttributeDefinition attribute in Interface.Attributes)
+{#>	<#= attribute #>
+<# }
+}#>
+  	<#= Interface.Signature #>
+  	{
+<# if(Interface.Events!=null && Interface.Events.Count()>0)
+{#>		#region Events
+<#foreach (EventDefinition eventInfo in Interface.Events)
+{
+	if(eventInfo.Attributes!=null && eventInfo.Attributes.Count()>0)
+	{
+		foreach (AttributeDefinition attribute in eventInfo.Attributes)
+{#>		<#= attribute #>
+<# }
+} #>		<#= String.Format("{0};", eventInfo.Signature) #>
+
+<#}#>
+		#endregion
+<# } #>
+<# if(Interface.Methods!=null && Interface.Methods.Count()>0)
+{#>		#region Methods
+<#foreach (MethodDefinition method in Interface.Methods)
+{
+	if(method.Attributes!=null && method.Attributes.Count()>0)
+	{
+		foreach (AttributeDefinition attribute in method.Attributes)
+{#>		<#= attribute #>
+<# }
+} #>		<#= String.Format("{0};", method.Signature) #>
+
+<#}#>
+		#endregion
+<# } #>
+
+	}
+}

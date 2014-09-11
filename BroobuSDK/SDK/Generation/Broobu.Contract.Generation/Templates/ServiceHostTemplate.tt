@@ -1,0 +1,3 @@
+﻿<#@ template language="C#" inherits="T4Toolbox.Template" #>
+<#@ output extension=".svc" #>
+<%@ ServiceHost Service="<#= ServiceHostDefinition.Namespace #>.<#= ServiceHostDefinition.Name #>Service" Factory="Iris.Fx.Networking.Wcf.AnnouncingServiceHostFactory" %>

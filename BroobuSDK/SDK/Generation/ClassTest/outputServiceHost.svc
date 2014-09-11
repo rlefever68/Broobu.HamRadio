@@ -1,0 +1,5 @@
+<%@ ServiceHost Service="Pms.ManageAuthorization.Service.ManageAuthorizationService" Factory="Pms.Framework.Networking.Wcf.AnnouncingServiceHostFactory" %>
+
+
+---------------------------New File------------------------------------------------------
+

@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ContractGenerationConfigurationSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:simpleType name="ParameterModifier">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value=""/>
+      <xs:enumeration value="ref"/>
+      <xs:enumeration value="out"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Template">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Template"  minOccurs="0" />
+      </xs:sequence>      
+      <xs:attribute name="Name" type="xs:string" />
+      <xs:attribute name="Namespace" type="xs:string" />
+      <xs:attribute name="IsEnum" type="xs:boolean" use="optional" />
+      <xs:attribute name="IsStruct" type="xs:boolean" use="optional" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Type">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Template"  minOccurs="0" />
+      </xs:sequence>
+      <xs:attribute name="Name" type="xs:string" />
+      <xs:attribute name="Namespace" type="xs:string" />
+      <xs:attribute name="IsEnum" type="xs:boolean" use="optional" />
+      <xs:attribute name="IsStruct" type="xs:boolean" use="optional" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReturnType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Template"  minOccurs="0" />
+      </xs:sequence>
+      <xs:attribute name="Name" type="xs:string" />
+      <xs:attribute name="Namespace" type="xs:string" />
+      <xs:attribute name="IsEnum" type="xs:boolean" use="optional" />
+      <xs:attribute name="IsStruct" type="xs:boolean" use="optional" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Parameter">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Type" />
+      </xs:sequence>
+      <xs:attribute name="Name" type="xs:string" />
+      <xs:attribute name="Modifier" form="unqualified"  type="ParameterModifier"  use="optional" />
+      <xs:attribute name="DefaultValue" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Parameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Parameter" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Method">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Attributes" minOccurs="0" />
+        <xs:element ref="InterfaceAttributes" minOccurs="0" />
+        <xs:element ref="ServiceAttributes" minOccurs="0" />
+        <xs:element ref="Parameters" minOccurs="0" />
+        <xs:element ref="ReturnType" minOccurs="0" />
+      </xs:sequence>
+      <xs:attribute name="Name" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Attribute">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Type" minOccurs="0" />
+      </xs:sequence>
+      <xs:attribute name="Name" type="xs:string" />
+      <xs:attribute name="Value" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InterfaceAttribute">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Type" minOccurs="0" />
+      </xs:sequence>
+      <xs:attribute name="Name" type="xs:string" />
+      <xs:attribute name="Value" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceAttribute">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Type" minOccurs="0" />
+      </xs:sequence>
+      <xs:attribute name="Name" type="xs:string" />
+      <xs:attribute name="Value" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Attributes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref ="Attribute" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InterfaceAttributes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref ="InterfaceAttribute" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceAttributes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref ="ServiceAttribute" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Property">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Attributes" minOccurs="0" />
+        <xs:element ref="Type" />
+      </xs:sequence>
+      <xs:attribute name="Name" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Methods">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Method" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Properties">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Property" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ContractServiceInterface">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Methods" minOccurs="0" />
+      </xs:sequence>
+      <xs:attribute name="Name" type="xs:string" />
+      <xs:attribute name="ServiceContractNamespace" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DomainObjectClass">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Properties" minOccurs="0" />
+      </xs:sequence>
+      <xs:attribute name="Name" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ContractServiceInterfaces">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref ="ContractServiceInterface" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DomainObjectClasses">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref ="DomainObjectClass" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ContractDefinition">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ContractServiceInterfaces" minOccurs="0" />
+        <xs:element ref="DomainObjectClasses" minOccurs="0" />
+      </xs:sequence>
+      <xs:attribute name="Name" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
