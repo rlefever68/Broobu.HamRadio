@@ -75,6 +75,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Wulka\SDK\Src\Wulka\Wulka.csproj">
+      <Project>{82a8069d-fd31-4cca-8096-f93050b0a49d}</Project>
+      <Name>Wulka</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Business\Broobu.Hamdroid.Business\Broobu.Hamdroid.Business.csproj">
       <Project>{A71D50EC-236A-4BAC-AF31-B6B7D7936880}</Project>
       <Name>Broobu.Hamdroid.Business</Name>

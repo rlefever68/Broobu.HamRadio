@@ -1,12 +1,13 @@
 ﻿using System;
 using Broobu.Hamdroid.Business;
 using Broobu.Hamdroid.Contract.Domain;
+using Broobu.Hamdroid.Contract.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Broobu.Hamdroid.Contract.Test
 {
     [TestClass]
-    public class HamdroidTestFixture
+    public class HamdroidTestFixture : IHamdroid
     {
         [TestMethod]
         public void Try_GetCallSignInfo()
