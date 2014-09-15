@@ -11,35 +11,32 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using System;
 using Broobu.HamRadio.Business.Interfaces;
 using Broobu.HamRadio.Contract.Domain;
 using Broobu.Qrz.Contract;
-using Iris.Fx.Data;
-using Iris.Fx.Logging;
-using Iris.Fx.Utils;
-using log4net;
-
-
+using Broobu.Qrz.Contract.Domain;
+using NLog;
+using Wulka.Data;
+using Wulka.Domain;
+using Wulka.Exceptions;
 
 namespace Broobu.HamRadio.Business.Providers
 {
     /// <summary>
-    /// Class HamRadioProvider.
+    ///     Class HamRadioProvider.
     /// </summary>
-    class HamRadios : IHamRadioProvider
+    internal class HamRadios : IHamRadioProvider
     {
-
-
-
         /// <summary>
-        /// The logger
+        ///     The logger
         /// </summary>
-        ILog logger = LogManager.GetLogger(typeof(HamRadios));
+        private readonly Logger logger = LogManager.GetCurrentClassLogger();
 
 
         /// <summary>
-        /// Gets the station information.
+        ///     Gets the station information.
         /// </summary>
         /// <param name="callId">The call identifier.</param>
         /// <returns>StationItem.</returns>
@@ -49,8 +46,8 @@ namespace Broobu.HamRadio.Business.Providers
             {
                 callId = callId.ToUpper();
                 StationItem si = null;
-                logger.DebugFormat("Saving {0}.", callId);
-                var res = QrzDotComPortal
+                logger.Info("Saving {0}.", callId);
+                CallSign res = QrzDotComPortal
                     .Proxy
                     .GetCallSign(callId);
                 si = res != null ? res.ToStationItem() : CreateUnknownStationItem(callId);
@@ -58,33 +55,28 @@ namespace Broobu.HamRadio.Business.Providers
             }
             catch (Exception exception)
             {
-                logger.LogException(exception);
+                logger.Error(exception.GetCombinedMessages());
                 return null;
             }
         }
 
         /// <summary>
-        /// Creates the unknown station item.
-        /// </summary>
-        /// <param name="callId">The call identifier.</param>
-        /// <returns>StationItem.</returns>
-        private StationItem CreateUnknownStationItem(string callId)
-        {
-            return new StationItem() {Id=callId, CallId = callId, User = callId, SessionId = "UNKNOWN"};
-        }
-
-        /// <summary>
-        /// Gets the logbook items for station.
+        ///     Gets the logbook items for station.
         /// </summary>
         /// <param name="callId">The call identifier.</param>
         /// <returns>LogbookItem[][].</returns>
         public LogbookItem[] GetLogbookItemsForStation(string callId)
         {
-            return Provider<LogbookItem>.Where("MyCallId",callId);
+            var req = new WhereRequest
+            {
+                Field = "MyCallId",
+                Value = callId
+            };
+            return Provider<LogbookItem>.Where(req);
         }
 
         /// <summary>
-        /// Saves the logbook items.
+        ///     Saves the logbook items.
         /// </summary>
         /// <param name="items">The items.</param>
         /// <returns>LogbookItem[][].</returns>
@@ -95,7 +87,7 @@ namespace Broobu.HamRadio.Business.Providers
         }
 
         /// <summary>
-        /// Deletes the logbook items.
+        ///     Deletes the logbook items.
         /// </summary>
         /// <param name="items">The items.</param>
         /// <returns>LogbookItem[][].</returns>
@@ -106,7 +98,7 @@ namespace Broobu.HamRadio.Business.Providers
         }
 
         /// <summary>
-        /// Deletes the logbook item.
+        ///     Deletes the logbook item.
         /// </summary>
         /// <param name="item">The item.</param>
         /// <returns>LogbookItem.</returns>
@@ -117,11 +109,21 @@ namespace Broobu.HamRadio.Business.Providers
         }
 
         /// <summary>
-        /// Registers the required objects.
+        ///     Registers the required objects.
         /// </summary>
         /// <exception cref="System.NotImplementedException"></exception>
         public void InflateDomain()
         {
+        }
+
+        /// <summary>
+        ///     Creates the unknown station item.
+        /// </summary>
+        /// <param name="callId">The call identifier.</param>
+        /// <returns>StationItem.</returns>
+        private StationItem CreateUnknownStationItem(string callId)
+        {
+            return new StationItem {Id = callId, CallId = callId, User = callId, SessionId = "UNKNOWN"};
         }
     }
 }

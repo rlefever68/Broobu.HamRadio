@@ -6,11 +6,11 @@ namespace Broobu.HamRadio.Contract.Domain
     {
         public static LogbookItem[] GetTestObjects()
         {
-            return new LogbookItem[]
+            return new[]
             {
-                new LogbookItem() 
+                new LogbookItem
                 {
-                    Id ="LogbookItem1",
+                    Id = "LogbookItem1",
                     MyCallId = "ON8RL",
                     MyCallModifier = "/P",
                     WorkedStationId = "ON3NL",
@@ -20,9 +20,9 @@ namespace Broobu.HamRadio.Contract.Domain
                     ExtraInfo = "Dit is wat extra info",
                     RxReport = "48"
                 },
-                new LogbookItem() 
+                new LogbookItem
                 {
-                    Id ="LogbookItem2",
+                    Id = "LogbookItem2",
                     MyCallId = "ON8RL",
                     MyCallModifier = "/P",
                     WorkedStationId = "ON4NL",
@@ -32,9 +32,9 @@ namespace Broobu.HamRadio.Contract.Domain
                     ExtraInfo = "Laat ons hierover wat meer vertellen",
                     TxReport = "59"
                 },
-                new LogbookItem() 
+                new LogbookItem
                 {
-                    Id ="LogbookItem3",
+                    Id = "LogbookItem3",
                     MyCallId = "ON4NL",
                     MyCallModifier = "/P",
                     WorkedStationId = "ON3NL",
@@ -42,9 +42,9 @@ namespace Broobu.HamRadio.Contract.Domain
                     Modulation = "FM",
                     Started = DateTime.Now.ToUniversalTime()
                 },
-                new LogbookItem() 
+                new LogbookItem
                 {
-                    Id ="LogbookItem4",
+                    Id = "LogbookItem4",
                     MyCallId = "ON8RL",
                     MyCallModifier = "/P",
                     WorkedStationId = "PA4CL",

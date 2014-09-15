@@ -12,42 +12,36 @@
 // <summary></summary>
 // ***********************************************************************
 
-using System;
 using Broobu.HamRadio.Business.Interfaces;
 using Broobu.HamRadio.Business.Providers;
 using Broobu.HamRadio.Contract.Domain;
 using Broobu.Qrz.Contract.Domain;
-using Iris.Fx.Utils;
 
 namespace Broobu.HamRadio.Business
 {
     /// <summary>
-    /// Class HamRadioProvider.
+    ///     Class HamRadioProvider.
     /// </summary>
     public static class HamRadioProvider
     {
-
         /// <summary>
-        /// Gets the ham radio.
+        ///     Gets the ham radio.
         /// </summary>
         /// <value>The ham radio.</value>
         public static IHamRadioProvider HamRadio
         {
-            get 
-            {
-                return new HamRadios();
-            }
+            get { return new HamRadios(); }
         }
 
 
         /// <summary>
-        /// To the station item.
+        ///     To the station item.
         /// </summary>
         /// <param name="res">The resource.</param>
         /// <returns>StationItem.</returns>
         public static StationItem ToStationItem(this CallSign res)
         {
-            return new StationItem()
+            return new StationItem
             {
                 Id = res.user,
                 Address1 = res.addr1,
@@ -93,7 +87,5 @@ namespace Broobu.HamRadio.Business
                 Zip = res.zip
             };
         }
-
-       
     }
 }

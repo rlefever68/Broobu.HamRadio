@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Service="Broobu.Qrz.Service.QrzProxySentry" Factory="Iris.Fx.Networking.Wcf.SentryHostFactory" %>
+﻿<%@ ServiceHost Service="Broobu.Qrz.Service.QrzProxySentry" Factory="Wulka.Networking.Wcf.SentryHostFactory" %>

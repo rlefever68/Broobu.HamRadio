@@ -7,19 +7,23 @@ namespace Broobu.Qrz.Contract.Domain
     {
         [DataMember]
         public string Error { get; set; }
+
         [DataMember]
         public string Key { get; set; }
+
         [DataMember]
         public string Message { get; set; }
+
         [DataMember]
         public string GMTTime { get; set; }
+
         [DataMember]
         public string Count { get; set; }
+
         [DataMember]
         public string Subexp { get; set; }
+
         [DataMember]
         public string Remark { get; set; }
-
-
     }
 }

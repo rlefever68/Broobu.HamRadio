@@ -14,7 +14,7 @@
 
 using Broobu.HamRadio.Contract.Domain;
 using Broobu.ManageQso.Contract.Interfaces;
-using Iris.Fx.Networking.Wcf;
+using Wulka.Networking.Wcf;
 
 namespace Broobu.ManageQso.Contract.Agent
 {

@@ -2,7 +2,6 @@
 
 namespace Broobu.Qrz.Contract.Domain
 {
-
     [DataContract(Namespace = "http://www.qrz.com")]
     public class CallSign
     {
@@ -112,15 +111,19 @@ namespace Broobu.Qrz.Contract.Domain
 
         [DataMember]
         public string cqzone { get; set; }
+
         [DataMember]
         public string ituzone { get; set; }
+
         [DataMember]
         public string locref { get; set; }
 
         [DataMember]
         public string iota { get; set; }
+
         [DataMember]
         public string lotw { get; set; }
+
         [DataMember]
         public string user { get; set; }
 

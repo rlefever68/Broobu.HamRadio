@@ -7,10 +7,7 @@ namespace Broobu.Qrz.Contract
     {
         public static IQrzProxyAgent Proxy
         {
-            get 
-            {
-                return new QrzProxyAgent();
-            }
+            get { return new QrzProxyAgent(); }
         }
     }
 }

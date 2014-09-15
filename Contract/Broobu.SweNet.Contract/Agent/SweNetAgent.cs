@@ -14,7 +14,7 @@
 using System;
 using Broobu.SweNet.Contract.Domain;
 using Broobu.SweNet.Contract.Interfaces;
-using Iris.Fx.Networking.Wcf;
+using Wulka.Networking.Wcf;
 
 namespace Broobu.SweNet.Contract.Agent
 {

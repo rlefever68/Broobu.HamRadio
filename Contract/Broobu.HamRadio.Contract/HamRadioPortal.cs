@@ -7,10 +7,7 @@ namespace Broobu.HamRadio.Contract
     {
         public static IHamRadioAgent Agent
         {
-            get 
-            {
-                return new HamRadioAgent();
-            }
+            get { return new HamRadioAgent(); }
         }
     }
 }

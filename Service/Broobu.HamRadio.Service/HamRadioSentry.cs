@@ -11,35 +11,24 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using System.ServiceModel;
 using Broobu.HamRadio.Business;
 using Broobu.HamRadio.Contract.Domain;
 using Broobu.HamRadio.Contract.Interfaces;
-using Iris.Fx.Networking.Wcf;
-
+using Wulka.Networking.Wcf;
 
 namespace Broobu.HamRadio.Service
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
     /// <summary>
-    /// Class HamRadioService.
+    ///     Class HamRadioService.
     /// </summary>
-    
     [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
     public class HamRadioSentry : SentryBase, IHamRadio
     {
         /// <summary>
-        /// Registers the required domain objects.
-        /// </summary>
-        protected override void RegisterRequiredDomainObjects()
-        {
-            HamRadioProvider
-                .HamRadio
-                .InflateDomain();
-        }
-
-        /// <summary>
-        /// Gets the station information.
+        ///     Gets the station information.
         /// </summary>
         /// <param name="callId">The call identifier.</param>
         /// <returns>StationItem.</returns>
@@ -51,7 +40,7 @@ namespace Broobu.HamRadio.Service
         }
 
         /// <summary>
-        /// Gets the logbook items for station.
+        ///     Gets the logbook items for station.
         /// </summary>
         /// <param name="callId">The call identifier.</param>
         /// <returns>LogbookItem[][].</returns>
@@ -60,11 +49,10 @@ namespace Broobu.HamRadio.Service
             return HamRadioProvider
                 .HamRadio
                 .GetLogbookItemsForStation(callId);
-
         }
 
         /// <summary>
-        /// Saves the logbook items.
+        ///     Saves the logbook items.
         /// </summary>
         /// <param name="items">The items.</param>
         /// <returns>LogbookItem[][].</returns>
@@ -76,7 +64,7 @@ namespace Broobu.HamRadio.Service
         }
 
         /// <summary>
-        /// Deletes the logbook items.
+        ///     Deletes the logbook items.
         /// </summary>
         /// <param name="items">The items.</param>
         /// <returns>LogbookItem[][].</returns>
@@ -88,7 +76,7 @@ namespace Broobu.HamRadio.Service
         }
 
         /// <summary>
-        /// Deletes the logbook item.
+        ///     Deletes the logbook item.
         /// </summary>
         /// <param name="item">The item.</param>
         /// <returns>LogbookItem.</returns>
@@ -97,6 +85,16 @@ namespace Broobu.HamRadio.Service
             return HamRadioProvider
                 .HamRadio
                 .DeleteLogbookItem(item);
+        }
+
+        /// <summary>
+        ///     Registers the required domain objects.
+        /// </summary>
+        protected override void RegisterRequiredDomainObjects()
+        {
+            HamRadioProvider
+                .HamRadio
+                .InflateDomain();
         }
     }
 }

@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using System;
 using Broobu.Hamdroid.Business.Interfaces;
 using Broobu.Hamdroid.Contract.Domain;
@@ -18,23 +19,26 @@ using Broobu.HamRadio.Business;
 using Broobu.HamRadio.Contract.Domain;
 using Broobu.LATI.Contract;
 using Broobu.LATI.Contract.Domain;
-using Iris.Fx.Data;
-using Iris.Fx.Logging;
-using Iris.Fx.Utils;
-using Iris.Fx.Utils.Geo;
-using log4net;
-using log4net.Repository.Hierarchy;
+using NLog;
+using Wulka.Exceptions;
+using Wulka.Utils;
+using Wulka.Utils.Geo;
 
 namespace Broobu.Hamdroid.Business.Workers
 {
     /// <summary>
-    /// Class Hamdroids.
+    ///     Class Hamdroids.
     /// </summary>
-    class Hamdroids : IHamdroids
+    internal class Hamdroids : IHamdroids
     {
+        /// <summary>
+        ///     Gets the logger.
+        /// </summary>
+        /// <value>The logger.</value>
+        private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
         /// <summary>
-        /// Gets the call sign information.
+        ///     Gets the call sign information.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <param name="clientLat">The client lat.</param>
@@ -45,8 +49,8 @@ namespace Broobu.Hamdroid.Business.Workers
         {
             id = id.ToUpper();
             CallSignInfo res = null;
-            var it = HamRadioProvider.HamRadio
-               .GetStationInfo(id);
+            StationItem it = HamRadioProvider.HamRadio
+                .GetStationInfo(id);
             if (it.SessionId == "UNKNOWN")
             {
                 res = it.ToUnknown();
@@ -57,18 +61,20 @@ namespace Broobu.Hamdroid.Business.Workers
                 res.LongPath = GetLongPath(it, clientLat, clientLon, unit);
                 res.ShortPath = GetShortPath(it, clientLat, clientLon, unit);
                 res.Bearing = GetBearing(it, clientLat, clientLon);
-                res.DisplayLatitude = GeoAngle.FromDouble(Convert.ToDouble(it.Latitude)).ToString(LocationFormat.Latitude);
-                res.DisplayLongitude = GeoAngle.FromDouble(Convert.ToDouble(it.Longitude)).ToString(LocationFormat.Longtitude);
+                res.DisplayLatitude =
+                    GeoAngle.FromDouble(Convert.ToDouble(it.Latitude)).ToString(LocationFormat.Latitude);
+                res.DisplayLongitude =
+                    GeoAngle.FromDouble(Convert.ToDouble(it.Longitude)).ToString(LocationFormat.Longtitude);
             }
             res.YourDisplayLatitude = GeoAngle.FromDouble(clientLat).ToString(LocationFormat.Latitude);
             res.YourDisplayLongitude = GeoAngle.FromDouble(clientLon).ToString(LocationFormat.Longtitude);
-            res.YourGrid = CalculateGrid(clientLat,clientLon);
+            res.YourGrid = CalculateGrid(clientLat, clientLon);
             return res;
         }
 
 
         /// <summary>
-        /// Gets the avatar.
+        ///     Gets the avatar.
         /// </summary>
         /// <param name="url">The URL.</param>
         /// <param name="width">The width.</param>
@@ -81,18 +87,7 @@ namespace Broobu.Hamdroid.Business.Workers
 
 
         /// <summary>
-        /// Gets the logger.
-        /// </summary>
-        /// <value>The logger.</value>
-        private ILog Logger
-        {
-            get { return LogManager.GetLogger(typeof (Hamdroids)); }
-        }
-
-
-
-        /// <summary>
-        /// Registers the device location.
+        ///     Registers the device location.
         /// </summary>
         /// <param name="deviceId">The device identifier.</param>
         /// <param name="latitude">The latitude.</param>
@@ -101,15 +96,16 @@ namespace Broobu.Hamdroid.Business.Workers
         /// <param name="bearing">The bearing.</param>
         /// <param name="speed">The speed.</param>
         /// <returns>DeviceLocation.</returns>
-        public DeviceLocation RegisterDeviceLocation(string deviceId, double latitude, double longitude, double altitude, float bearing, float speed)
+        public DeviceLocation RegisterDeviceLocation(string deviceId, double latitude, double longitude, double altitude,
+            float bearing, float speed)
         {
             DeviceLocation loc = null;
             try
             {
-                loc = new DeviceLocation()
+                loc = new DeviceLocation
                 {
                     Device = deviceId,
-                    Accuracy = (float)0.0,
+                    Accuracy = (float) 0.0,
                     Altitude = altitude,
                     Bearing = bearing,
                     Speed = speed,
@@ -130,14 +126,14 @@ namespace Broobu.Hamdroid.Business.Workers
             }
             catch (Exception exception)
             {
-                Logger.LogException(exception);
+                _logger.Error(exception.GetCombinedMessages());
                 return loc;
             }
-    }
+        }
 
 
         /// <summary>
-        /// Gets the long path.
+        ///     Gets the long path.
         /// </summary>
         /// <param name="item">The item.</param>
         /// <param name="clientLat">The client lat.</param>
@@ -146,17 +142,17 @@ namespace Broobu.Hamdroid.Business.Workers
         /// <returns>System.String.</returns>
         public string GetLongPath(StationItem item, double clientLat, double clientLon, string unit)
         {
-            var lat = Convert.ToDouble(item.Latitude);
-            var lon = Convert.ToDouble(item.Longitude);
+            double lat = Convert.ToDouble(item.Latitude);
+            double lon = Convert.ToDouble(item.Longitude);
             var res = Convert.ToString(
-                unit == "mi" ? 
-                GeoUtils.LongDistanceTo(clientLat, lat, clientLon, lon, DistanceType.Miles) 
-                : GeoUtils.LongDistanceTo(clientLat, lat, clientLon, lon, DistanceType.Kilometers));
+                unit == "mi"
+                    ? GeoUtils.LongDistanceTo(clientLat, lat, clientLon, lon, DistanceType.Miles)
+                    : GeoUtils.LongDistanceTo(clientLat, lat, clientLon, lon, DistanceType.Kilometers));
             return String.Format(unit == "mi" ? "{0} Mi" : "{0} km", res);
         }
 
         /// <summary>
-        /// Gets the short path.
+        ///     Gets the short path.
         /// </summary>
         /// <param name="item">The item.</param>
         /// <param name="clientLat">The client lat.</param>
@@ -165,17 +161,17 @@ namespace Broobu.Hamdroid.Business.Workers
         /// <returns>System.String.</returns>
         public static string GetShortPath(StationItem item, double clientLat, double clientLon, string unit)
         {
-            var lat = Convert.ToDouble(item.Latitude);
-            var lon = Convert.ToDouble(item.Longitude);
+            double lat = Convert.ToDouble(item.Latitude);
+            double lon = Convert.ToDouble(item.Longitude);
             var res = Convert.ToString(
-                unit == "mi" ?
-                GeoUtils.DistanceTo(clientLat, lat, clientLon, lon, DistanceType.Miles)
-                : GeoUtils.DistanceTo(clientLat, lat, clientLon, lon, DistanceType.Kilometers));
+                unit == "mi"
+                    ? GeoUtils.DistanceTo(clientLat, lat, clientLon, lon, DistanceType.Miles)
+                    : GeoUtils.DistanceTo(clientLat, lat, clientLon, lon, DistanceType.Kilometers));
             return String.Format(unit == "mi" ? "{0} Mi" : "{0} km", res);
         }
 
         /// <summary>
-        /// Gets the bearing.
+        ///     Gets the bearing.
         /// </summary>
         /// <param name="item">The item.</param>
         /// <param name="clientLat">The client lat.</param>
@@ -183,14 +179,14 @@ namespace Broobu.Hamdroid.Business.Workers
         /// <returns>System.String.</returns>
         public static string GetBearing(StationItem item, double clientLat, double clientLon)
         {
-            var lat = Convert.ToDouble(item.Latitude);
-            var lon = Convert.ToDouble(item.Longitude);
+            double lat = Convert.ToDouble(item.Latitude);
+            double lon = Convert.ToDouble(item.Longitude);
             return GeoAngle.FromDouble(GeoUtils.BearingTo(clientLat, lat, clientLon, lon)).ToString();
         }
 
 
         /// <summary>
-        /// Calculates the grid.
+        ///     Calculates the grid.
         /// </summary>
         /// <param name="lat">The lat.</param>
         /// <param name="lon">The lon.</param>
@@ -199,21 +195,16 @@ namespace Broobu.Hamdroid.Business.Workers
         {
             lon = lon + 180;
             lat = lat + 90;
-            var c1 = (char)('A' + Convert.ToInt32(Math.Truncate(lon / 20)));
-            var c2 = (char)('A' + Convert.ToInt32(Math.Truncate(lat / 10)));
-            var c3 = (char)('0' + Convert.ToInt32(Math.Truncate((lon % 20) / 2)));
-            var c4 = (char)('0' + Convert.ToInt32(Math.Truncate((lat % 10) / 1)));
-            var res = (lon - (2*Math.Truncate(lon/2)))*12;
-            var c5 = (char)('a' + Convert.ToInt32(res));
+            var c1 = (char) ('A' + Convert.ToInt32(Math.Truncate(lon/20)));
+            var c2 = (char) ('A' + Convert.ToInt32(Math.Truncate(lat/10)));
+            var c3 = (char) ('0' + Convert.ToInt32(Math.Truncate((lon%20)/2)));
+            var c4 = (char) ('0' + Convert.ToInt32(Math.Truncate((lat%10)/1)));
+            double res = (lon - (2*Math.Truncate(lon/2)))*12;
+            var c5 = (char) ('a' + Convert.ToInt32(res));
             res = (lat - (Math.Truncate(lat)))*24;
-            var c6 = (char)('a' + Convert.ToInt32(res));
-            var grid = String.Format("{0}{1}{2}{3}{4}{5}", c1, c2, c3, c4, c5, c6);
+            var c6 = (char) ('a' + Convert.ToInt32(res));
+            string grid = String.Format("{0}{1}{2}{3}{4}{5}", c1, c2, c3, c4, c5, c6);
             return grid;
-
-
-
         }
     }
-
-
 }

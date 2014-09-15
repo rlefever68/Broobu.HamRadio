@@ -11,70 +11,72 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using System.ServiceModel;
 using Broobu.HamRadio.Contract.Domain;
-using Iris.Fx.Domain;
+using Wulka.Domain.Base;
 
 namespace Broobu.HamRadio.Contract.Interfaces
 {
-
-
     /// <summary>
-    /// Class HamRadioConst.
+    ///     Class HamRadioConst.
     /// </summary>
     public static class HamRadioConst
     {
         /// <summary>
-        /// The service namespace
+        ///     The service namespace
         /// </summary>
         public const string ServiceNamespace = "http://hamradio.broobu.com/13/01";
     }
 
 
     /// <summary>
-    /// Interface IHamRadio
+    ///     Interface IHamRadio
     /// </summary>
-    [ServiceKnownType(typeof(Result))]
-    [ServiceKnownType(typeof(DomainObject<LogbookItem>))]
-    [ServiceKnownType(typeof(DomainObject<StationItem>))]
+    [ServiceKnownType(typeof (Result))]
+    [ServiceKnownType(typeof (DomainObject<LogbookItem>))]
+    [ServiceKnownType(typeof (DomainObject<StationItem>))]
     [ServiceContract(Namespace = HamRadioConst.ServiceNamespace)]
     public interface IHamRadio
     {
         /// <summary>
-        /// Gets the station information.
+        ///     Gets the station information.
         /// </summary>
         /// <param name="callId">The call identifier.</param>
         /// <returns>StationItem.</returns>
         [OperationContract]
         StationItem GetStationInfo(string callId);
+
         /// <summary>
-        /// Gets the logbook items for station.
+        ///     Gets the logbook items for station.
         /// </summary>
         /// <param name="callId">The call identifier.</param>
         /// <returns>LogbookItem[][].</returns>
         [OperationContract]
         LogbookItem[] GetLogbookItemsForStation(string callId);
+
         /// <summary>
-        /// Saves the logbook items.
+        ///     Saves the logbook items.
         /// </summary>
         /// <param name="items">The items.</param>
         /// <returns>LogbookItem[][].</returns>
         [OperationContract]
         LogbookItem[] SaveLogbookItems(LogbookItem[] items);
+
         /// <summary>
-        /// Deletes the logbook items.
+        ///     Deletes the logbook items.
         /// </summary>
         /// <param name="items">The items.</param>
         /// <returns>LogbookItem[][].</returns>
         [OperationContract]
         LogbookItem[] DeleteLogbookItems(LogbookItem[] items);
+
         /// <summary>
-        /// Deletes the logbook item.
+        ///     Deletes the logbook item.
         /// </summary>
         /// <param name="item">The item.</param>
         /// <returns>LogbookItem.</returns>
         [OperationContract]
         LogbookItem DeleteLogbookItem(LogbookItem item);
-
     }
 }

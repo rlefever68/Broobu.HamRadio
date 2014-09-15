@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Service="Broobu.HamRadio.Service.HamRadioSentry" Factory="Iris.Fx.Networking.Wcf.SentryHostFactory" %>
+﻿<%@ ServiceHost Service="Broobu.HamRadio.Service.HamRadioSentry" Factory="Wulka.Networking.Wcf.SentryHostFactory" %>

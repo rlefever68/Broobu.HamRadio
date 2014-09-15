@@ -11,24 +11,25 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using Broobu.Qrz.Contract.Domain;
 using Broobu.Qrz.Contract.Interfaces;
-using Iris.Fx.Networking.Wcf;
+using Wulka.Networking.Wcf;
 
 namespace Broobu.Qrz.Contract.Agent
 {
     /// <summary>
-    /// Class QrzProxyAgent.
+    ///     Class QrzProxyAgent.
     /// </summary>
-    class QrzProxyAgent : DiscoProxy<IQrzProxy>, IQrzProxyAgent
+    internal class QrzProxyAgent : DiscoProxy<IQrzProxy>, IQrzProxyAgent
     {
         /// <summary>
-        /// Does the login.
+        ///     Does the login.
         /// </summary>
         /// <returns>QRZDatabase.</returns>
         public Session DoLogin()
         {
-            var clt = CreateClient();
+            IQrzProxy clt = CreateClient();
             try
             {
                 return clt.DoLogin();
@@ -40,13 +41,13 @@ namespace Broobu.Qrz.Contract.Agent
         }
 
         /// <summary>
-        /// Gets the call sign.
+        ///     Gets the call sign.
         /// </summary>
         /// <param name="callSign">The call sign.</param>
         /// <returns>QRZDatabase.</returns>
         public CallSign GetCallSign(string callSign)
         {
-            var clt = CreateClient();
+            IQrzProxy clt = CreateClient();
             try
             {
                 return clt.GetCallSign(callSign);
@@ -59,7 +60,7 @@ namespace Broobu.Qrz.Contract.Agent
 
 
         /// <summary>
-        /// Gets the contract namespace.
+        ///     Gets the contract namespace.
         /// </summary>
         /// <returns>System.String.</returns>
         protected override string GetContractNamespace()

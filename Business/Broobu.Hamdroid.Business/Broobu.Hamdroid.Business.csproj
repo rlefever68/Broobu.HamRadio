@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,9 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Broobu.Hamdroid.Business</RootNamespace>
     <AssemblyName>Broobu.Hamdroid.Business</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\Solutions\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,17 +41,8 @@
     <AssemblyOriginatorKeyFile>..\..\broobu.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Broobu.LATI.Contract">
-      <HintPath>..\..\BroobuSDK\Contracts\Broobu.LATI.Contract.dll</HintPath>
-    </Reference>
-    <Reference Include="Broobu.Taxonomy.Contract">
-      <HintPath>..\..\BroobuSDK\SDK\Broobu.Taxonomy.Contract.dll</HintPath>
-    </Reference>
-    <Reference Include="Iris.Fx">
-      <HintPath>..\..\BroobuSDK\SDK\Iris.Fx.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\..\BroobuSDK\SDK\log4net.dll</HintPath>
+    <Reference Include="NLog">
+      <HintPath>..\..\Solutions\packages\NLog.3.1.0.0\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -72,8 +65,18 @@
     <None Include="..\..\broobu.pfx">
       <Link>broobu.pfx</Link>
     </None>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Broobu\Contract\Broobu.LATI.Contract\Broobu.LATI.Contract.csproj">
+      <Project>{0EE13420-3C93-46BE-B07B-BBCE9D24B9CB}</Project>
+      <Name>Broobu.LATI.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Wulka\SDK\Src\Wulka\Wulka.csproj">
+      <Project>{82A8069D-FD31-4CCA-8096-F93050B0A49D}</Project>
+      <Name>Wulka</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Contract\Broobu.Hamdroid.Contract\Broobu.Hamdroid.Contract.csproj">
       <Project>{8F403A73-E3C0-426F-BC50-B16B9BD8A136}</Project>
       <Name>Broobu.Hamdroid.Contract</Name>
@@ -91,6 +94,13 @@
     <EmbeddedResource Include="anonymousAvatar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -18,20 +18,17 @@ using Broobu.Hamdroid.Contract.Interfaces;
 namespace Broobu.Hamdroid.Contract
 {
     /// <summary>
-    /// Class HamdroidPortal.
+    ///     Class HamdroidPortal.
     /// </summary>
     public static class HamdroidPortal
     {
         /// <summary>
-        /// Gets the agent.
+        ///     Gets the agent.
         /// </summary>
         /// <value>The agent.</value>
-        public static IHamdroidAgent Agent 
+        public static IHamdroidAgent Agent
         {
-            get 
-            {
-                return new HamdroidAgent();
-            }
+            get { return new HamdroidAgent(); }
         }
     }
 }

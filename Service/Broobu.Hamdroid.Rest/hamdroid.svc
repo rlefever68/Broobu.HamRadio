@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Service="Broobu.Hamdroid.Rest.HamdroidSentry" Factory="Iris.Fx.Networking.Wcf.SentryHostFactory" %>
+﻿<%@ ServiceHost Service="Broobu.Hamdroid.Rest.HamdroidSentry" Factory="Wulka.Networking.Wcf.SentryHostFactory" %>

@@ -1,13 +1,11 @@
-﻿using System;
-using System.ServiceModel;
+﻿using System.ServiceModel;
 using Broobu.Qrz.Contract.Domain;
-
 
 namespace Broobu.Qrz.Contract.Interfaces
 {
-    [ServiceKnownType(typeof(QRZDatabase))]
-    [ServiceKnownType(typeof(CallSign))]
-    [ServiceKnownType(typeof(Session))]
+    [ServiceKnownType(typeof (QRZDatabase))]
+    [ServiceKnownType(typeof (CallSign))]
+    [ServiceKnownType(typeof (Session))]
     [ServiceContract(Namespace = QrzConst.ServiceNamespace)]
     public interface IQrzProxy
     {
@@ -17,6 +15,4 @@ namespace Broobu.Qrz.Contract.Interfaces
         [OperationContract]
         CallSign GetCallSign(string callSign);
     }
-
-
 }

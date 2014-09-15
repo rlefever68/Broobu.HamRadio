@@ -1,5 +1,4 @@
-﻿using Broobu.HamRadio.Contract.Domain;
-using Broobu.HamRadio.Contract.Interfaces;
+﻿using Broobu.HamRadio.Contract.Interfaces;
 
 namespace Broobu.HamRadio.Business.Interfaces
 {

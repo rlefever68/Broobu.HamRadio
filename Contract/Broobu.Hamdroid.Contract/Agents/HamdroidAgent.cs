@@ -11,22 +11,23 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using System;
+using System.IO;
 using System.Net;
-using System.ServiceModel;
 using Broobu.Hamdroid.Contract.Domain;
 using Broobu.Hamdroid.Contract.Interfaces;
-using Iris.Fx.Utils;
+using Wulka.Utils;
 
 namespace Broobu.Hamdroid.Contract.Agents
 {
     /// <summary>
-    /// Class HamdroidAgent.
+    ///     Class HamdroidAgent.
     /// </summary>
-    class HamdroidAgent : IHamdroidAgent
+    internal class HamdroidAgent : IHamdroidAgent
     {
         /// <summary>
-        /// Gets the call sign information.
+        ///     Gets the call sign information.
         /// </summary>
         /// <param name="callsingId">The callsing identifier.</param>
         /// <param name="clientLat">The Latitude coordinate of the client</param>
@@ -35,28 +36,30 @@ namespace Broobu.Hamdroid.Contract.Agents
         /// <returns>StationItem.</returns>
         public CallSignInfo GetCallSignInfo(string callsingId, double clientLat, double clientLon, string unit)
         {
-            var req = WebRequest.Create(String.Format(HamdroidSentryConst.GetCallSingInfoUrl, callsingId, clientLat,clientLon,unit));
-            var resp = req.GetResponse();
-            var sIn = resp.GetResponseStream();
+            WebRequest req =
+                WebRequest.Create(String.Format(HamdroidSentryConst.GetCallSingInfoUrl, callsingId, clientLat, clientLon,
+                    unit));
+            WebResponse resp = req.GetResponse();
+            Stream sIn = resp.GetResponseStream();
             return DomainSerializer<CallSignInfo>.DeserializeJson(sIn);
         }
 
         /// <summary>
-        /// Gets the avatar.
+        ///     Gets the avatar.
         /// </summary>
         /// <param name="url">The URL.</param>
         /// <returns>System.String.</returns>
         /// <exception cref="System.NotImplementedException"></exception>
         public string GetAvatar(string url, int width, int height)
         {
-            var req = WebRequest.Create(String.Format(HamdroidSentryConst.GetAvatarUrl, url, width, height));
-            var resp = req.GetResponse();
-            var sIn = resp.GetResponseStream();
+            WebRequest req = WebRequest.Create(String.Format(HamdroidSentryConst.GetAvatarUrl, url, width, height));
+            WebResponse resp = req.GetResponse();
+            Stream sIn = resp.GetResponseStream();
             return sIn.AsBase64String();
         }
 
         /// <summary>
-        /// Registers the device location.
+        ///     Registers the device location.
         /// </summary>
         /// <param name="deviceId">The device identifier.</param>
         /// <param name="latitude">The latitude.</param>
@@ -65,11 +68,14 @@ namespace Broobu.Hamdroid.Contract.Agents
         /// <param name="bearing">The bearing.</param>
         /// <param name="speed">The speed.</param>
         /// <returns>DeviceLocation.</returns>
-        public DeviceLocation RegisterDeviceLocation(string deviceId, double latitude, double longitude, double altitude, float bearing,float speed)
+        public DeviceLocation RegisterDeviceLocation(string deviceId, double latitude, double longitude, double altitude,
+            float bearing, float speed)
         {
-            var req = WebRequest.Create(String.Format(HamdroidSentryConst.RegisterDeviceLocationUrl, deviceId, latitude, longitude, altitude,bearing,speed));
-            var resp = req.GetResponse();
-            var sIn = resp.GetResponseStream();
+            WebRequest req =
+                WebRequest.Create(String.Format(HamdroidSentryConst.RegisterDeviceLocationUrl, deviceId, latitude,
+                    longitude, altitude, bearing, speed));
+            WebResponse resp = req.GetResponse();
+            Stream sIn = resp.GetResponseStream();
             return DomainSerializer<DeviceLocation>.DeserializeJson(sIn);
         }
     }

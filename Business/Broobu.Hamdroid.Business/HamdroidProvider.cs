@@ -11,36 +11,32 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using System;
 using Broobu.Hamdroid.Business.Interfaces;
 using Broobu.Hamdroid.Business.Workers;
 using Broobu.Hamdroid.Contract.Domain;
 using Broobu.HamRadio.Contract.Domain;
 using Broobu.LATI.Contract.Domain;
-using Iris.Fx.Utils;
-
 
 namespace Broobu.Hamdroid.Business
 {
     /// <summary>
-    /// Class HamdroidProvider.
+    ///     Class HamdroidProvider.
     /// </summary>
     public static class HamdroidProvider
     {
         /// <summary>
-        /// Gets the hamdroids.
+        ///     Gets the hamdroids.
         /// </summary>
         /// <value>The hamdroids.</value>
-        public static IHamdroids Hamdroids 
+        public static IHamdroids Hamdroids
         {
-            get 
-            {
-                return new Hamdroids();
-            }
+            get { return new Hamdroids(); }
         }
 
         /// <summary>
-        /// To the call sign information.
+        ///     To the call sign information.
         /// </summary>
         /// <param name="item">The item.</param>
         /// <param name="clientLat">The client lat.</param>
@@ -48,7 +44,7 @@ namespace Broobu.Hamdroid.Business
         /// <returns>CallSignInfo.</returns>
         public static CallSignInfo ToCallSignInfo(this StationItem item)
         {
-            return new CallSignInfo()
+            return new CallSignInfo
             {
                 BioUrl = item.Bio,
                 CallSign = item.CallId,
@@ -62,35 +58,29 @@ namespace Broobu.Hamdroid.Business
         }
 
 
-
-
-
         public static LocationLog ToLocationLog(this DeviceLocation item)
         {
-            return new LocationLog()
+            return new LocationLog
             {
                 Bearing = item.Bearing,
                 Accuracy = item.Accuracy,
                 Altitude = item.Altitude,
                 Latitude = item.Latitude,
                 Longitude = item.Longitude,
-                Speed =  item.Speed,
+                Speed = item.Speed,
                 PoIId = item.Device
             };
         }
 
 
-
-
-
         /// <summary>
-        /// Unknowns the specified item.
+        ///     Unknowns the specified item.
         /// </summary>
         /// <param name="item">The item.</param>
         /// <returns>CallSignInfo.</returns>
         public static CallSignInfo ToUnknown(this StationItem item)
         {
-            return new CallSignInfo()
+            return new CallSignInfo
             {
                 BioUrl = "",
                 CallSign = item.CallId.ToUpper(),

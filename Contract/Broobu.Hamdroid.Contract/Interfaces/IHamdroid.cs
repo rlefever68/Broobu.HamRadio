@@ -1,18 +1,17 @@
-﻿using System;
-using System.IO;
-using System.ServiceModel;
+﻿using System.ServiceModel;
 using System.ServiceModel.Web;
 using Broobu.Hamdroid.Contract.Domain;
 
 namespace Broobu.Hamdroid.Contract.Interfaces
 {
-    [ServiceKnownType(typeof(CallSignInfo))]
+    [ServiceKnownType(typeof (CallSignInfo))]
     [ServiceContract(Namespace = HamdroidSentryConst.Namespace)]
     public interface IHamdroid
     {
         [OperationContract]
-        [WebGet(UriTemplate = "CallSign?id={id}&Lat={clientLat}&Lon={clientLon}&unit={unit}", ResponseFormat = WebMessageFormat.Json)]
-        CallSignInfo GetCallSignInfo(string id, double clientLat,double clientLon, string unit);
+        [WebGet(UriTemplate = "CallSign?id={id}&Lat={clientLat}&Lon={clientLon}&unit={unit}",
+            ResponseFormat = WebMessageFormat.Json)]
+        CallSignInfo GetCallSignInfo(string id, double clientLat, double clientLon, string unit);
 
 
         [OperationContract]
@@ -21,9 +20,10 @@ namespace Broobu.Hamdroid.Contract.Interfaces
 
 
         [OperationContract]
-        [WebGet(UriTemplate = "location?id={device}&lat={latitude}&lon={longitude}&alt={altitude}&bea={bearing}&spe={speed}",
+        [WebGet(
+            UriTemplate = "location?id={device}&lat={latitude}&lon={longitude}&alt={altitude}&bea={bearing}&spe={speed}",
             ResponseFormat = WebMessageFormat.Json)]
-        DeviceLocation RegisterDeviceLocation(string device, double latitude, double longitude, double altitude, float bearing, float speed);
-
+        DeviceLocation RegisterDeviceLocation(string device, double latitude, double longitude, double altitude,
+            float bearing, float speed);
     }
 }

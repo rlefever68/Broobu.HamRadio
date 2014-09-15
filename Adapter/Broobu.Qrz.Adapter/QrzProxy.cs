@@ -16,30 +16,27 @@
 using System;
 using System.IO;
 using System.Net;
-using System.Xml;
 using System.Xml.Serialization;
 using Broobu.Qrz.Contract;
 using Broobu.Qrz.Contract.Domain;
 using Broobu.Qrz.Contract.Interfaces;
-using Iris.Fx.Utils;
+using Wulka.Utils;
 
 namespace Broobu.Qrz.Adapter
 {
     /// <summary>
-    /// Class QrzProxy.
+    ///     Class QrzProxy.
     /// </summary>
-    class QrzProxy : IQrzProxy
+    internal class QrzProxy : IQrzProxy
     {
-
-
         /// <summary>
-        /// Does the login.
+        ///     Does the login.
         /// </summary>
         /// <param name="userName">Name of the user.</param>
         /// <param name="passWord">The pass word.</param>
         public Session DoLogin()
         {
-            var loginUrl = String.Format(ConfigHelper.QrzLoginCommand,
+            string loginUrl = String.Format(ConfigHelper.QrzLoginCommand,
                 ConfigHelper.QrzUrl,
                 ConfigHelper.QrzUserName,
                 ConfigHelper.QrzPassword);
@@ -48,18 +45,17 @@ namespace Broobu.Qrz.Adapter
         }
 
 
-
         /// <summary>
-        /// Gets the call sign.
+        ///     Gets the call sign.
         /// </summary>
         /// <param name="callSign">The call sign.</param>
         /// <returns>QRZDatabase.</returns>
         public CallSign GetCallSign(string callSign)
         {
             string session = DoLogin().Key;
-            var loginUrl = String.Format(ConfigHelper.QrzGetCallSignCommand,
+            string loginUrl = String.Format(ConfigHelper.QrzGetCallSignCommand,
                 ConfigHelper.QrzUrl,
-                session, 
+                session,
                 callSign);
             QRZDatabase db = CallQrz(loginUrl);
             return db.Callsign;
@@ -67,13 +63,13 @@ namespace Broobu.Qrz.Adapter
 
 
         /// <summary>
-        /// Calls the QRZ.
+        ///     Calls the QRZ.
         /// </summary>
         /// <param name="url">The URL.</param>
         private QRZDatabase CallQrz(string url, bool isDebug = false)
         {
             var wc = new WebClient();
-            var sIn = wc.OpenRead(url);
+            Stream sIn = wc.OpenRead(url);
             if (sIn == null) return null;
             if (isDebug)
             {
@@ -82,9 +78,8 @@ namespace Broobu.Qrz.Adapter
                 sIn.Position = 0;
             }
             var sr = new StreamReader(sIn);
-            var ser = new XmlSerializer(typeof(QRZDatabase));
-            return (QRZDatabase)ser.Deserialize(sr);
+            var ser = new XmlSerializer(typeof (QRZDatabase));
+            return (QRZDatabase) ser.Deserialize(sr);
         }
-
     }
 }

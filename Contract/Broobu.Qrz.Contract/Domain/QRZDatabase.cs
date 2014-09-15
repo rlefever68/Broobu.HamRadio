@@ -3,8 +3,8 @@ using System.Xml.Serialization;
 
 namespace Broobu.Qrz.Contract.Domain
 {
-    [DataContract( Name = "QRZDatabase", Namespace = "http://www.qrz.com")]
-    [XmlRoot(Namespace = "http://www.qrz.com", ElementName = "QRZDatabase", DataType = "string", IsNullable=true)]
+    [DataContract(Name = "QRZDatabase", Namespace = "http://www.qrz.com")]
+    [XmlRoot(Namespace = "http://www.qrz.com", ElementName = "QRZDatabase", DataType = "string", IsNullable = true)]
     public class QRZDatabase
     {
         [DataMember(Name = "version")]

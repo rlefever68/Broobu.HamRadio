@@ -11,24 +11,22 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using System.ServiceModel;
 using Broobu.Qrz.Adapter;
 using Broobu.Qrz.Contract.Domain;
 using Broobu.Qrz.Contract.Interfaces;
-using Iris.Fx.Networking.Wcf;
 
 namespace Broobu.Qrz.Service
 {
-
     /// <summary>
-    /// Class QrzProxyService.
+    ///     Class QrzProxyService.
     /// </summary>
     [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
     public class QrzProxySentry : IQrzProxy
     {
-
         /// <summary>
-        /// Does the login.
+        ///     Does the login.
         /// </summary>
         /// <returns>QRZDatabase.</returns>
         public Session DoLogin()
@@ -39,7 +37,7 @@ namespace Broobu.Qrz.Service
         }
 
         /// <summary>
-        /// Gets the call sign.
+        ///     Gets the call sign.
         /// </summary>
         /// <param name="callSign">The call sign.</param>
         /// <returns>QRZDatabase.</returns>

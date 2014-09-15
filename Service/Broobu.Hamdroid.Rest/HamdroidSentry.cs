@@ -11,21 +11,20 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using Broobu.Hamdroid.Business;
 using Broobu.Hamdroid.Contract.Domain;
 using Broobu.Hamdroid.Contract.Interfaces;
 
-
-
 namespace Broobu.Hamdroid.Rest
 {
     /// <summary>
-    /// Class HamdroidSentry.
+    ///     Class HamdroidSentry.
     /// </summary>
     public class HamdroidSentry : IHamdroid
     {
         /// <summary>
-        /// Gets the call sign information.
+        ///     Gets the call sign information.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <param name="clientLat">The client lat.</param>
@@ -36,12 +35,11 @@ namespace Broobu.Hamdroid.Rest
         {
             return HamdroidProvider
                 .Hamdroids
-                .GetCallSignInfo(id,clientLat,clientLon, unit);
-
+                .GetCallSignInfo(id, clientLat, clientLon, unit);
         }
 
         /// <summary>
-        /// Gets the avatar.
+        ///     Gets the avatar.
         /// </summary>
         /// <param name="url">The URL.</param>
         /// <param name="width">The width.</param>
@@ -51,22 +49,23 @@ namespace Broobu.Hamdroid.Rest
         {
             return HamdroidProvider
                 .Hamdroids
-                .GetAvatar(url,width,height);
+                .GetAvatar(url, width, height);
         }
 
         /// <summary>
-        /// Registers the device location.
+        ///     Registers the device location.
         /// </summary>
         /// <param name="deviceId">The device identifier.</param>
         /// <param name="latitude">The latitude.</param>
         /// <param name="longitude">The longitude.</param>
         /// <param name="height">The height.</param>
         /// <returns>DeviceLocation.</returns>
-        public DeviceLocation RegisterDeviceLocation(string deviceId, double latitude, double longitude, double altitude, float bearing, float speed)
+        public DeviceLocation RegisterDeviceLocation(string deviceId, double latitude, double longitude, double altitude,
+            float bearing, float speed)
         {
             return HamdroidProvider
                 .Hamdroids
-                .RegisterDeviceLocation(deviceId, latitude, longitude, altitude,bearing,speed);
+                .RegisterDeviceLocation(deviceId, latitude, longitude, altitude, bearing, speed);
         }
     }
 }
